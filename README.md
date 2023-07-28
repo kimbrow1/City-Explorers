@@ -1,8 +1,26 @@
-# React + Vite
+# City Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Author**: Brian Kimbrow
+**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Getting Started
+<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+
+## Architecture
+
+
+## Change Log
+
+## Credit and Collaborations
+
+
+Name of feature: ________________________________
+
+Estimate of time needed to complete: _____
+
+Start time: _____
+
+Finish time: _____
