@@ -33,7 +33,7 @@ class App extends Component {
         <h3>Longitude: {this.state.memphisLongitude}</h3>
         <h3>Latitude: {this.state.memphisLatitude}</h3>
        
-        <button onClick={this.handleGetMemphis}>Get the data for the map</button>
+        <button onClick={this.handleGetMemphis}>Explore</button>
       </>
     );
   }
@@ -84,3 +84,5 @@ export default App;
 // }
 
 // export default App;
+
+
