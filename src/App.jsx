@@ -1,88 +1,58 @@
-import React, { Component } from "react";
+import React from "react";
 import axios from "axios";
 
-class App extends Component {
+const location_IQ_API_KEY = 'pk.7c317e21f05b6efd9a783137cf700eab';
+
+class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      memphisDisplayName: '',
-      memphisLontitude: '',
-      memphisLatitude: ''
-    }
+      memphisDisplay_Name: '', 
+      lon: '',
+      lat: '', 
+      memphisCityName: ''
+    };
   }
 
-  handleGetMemphis = async () => {
-    console.log("click");
-    let result = await axios.get("https://us1.locationiq.com/v1/search?key=pk.7c317e21f05b6efd9a783137cf700eab&q=memphis&format=json");
-    let data = result.data;
-    console.log(result.data[0].memphisLatitude); 
-  
+  handleExplore = async (event) => {
+    event.preventDefault();
+    let result = await axios.get(
+      `https://us1.locationiq.com/v1/search?key=${location_IQ_API_KEY}&q=${this.state.memphisCityName}&format=json`
+    );
+    console.log(result);
     this.setState({
-      memphisDisplayName: data[0].display_name,
-      memphisLatitude: data[0].lat, 
-      memphisLongitude: data[0].lon 
+      memphisDisplay_Name: result.data[0].display_name, 
+      lon: result.data[0].lon, 
+      lat: result.data[0].lat 
+    });
+    console.log(this.state);
+  };
+
+  handleChange = (event) => {
+    this.setState({
+      memphisCityName: event.target.value
     });
   };
-  
 
   render() {
-
     return (
       <>
-        <h3>Display Name: {this.state.memphisDisplayName}</h3>
-        <h3>Longitude: {this.state.memphisLongitude}</h3>
-        <h3>Latitude: {this.state.memphisLatitude}</h3>
-       
-        <button onClick={this.handleGetMemphis}>Explore</button>
+        <h3>{this.state.memphisDisplay_Name}</h3>
+        <p>Latitude: {this.state.lat}</p>
+        <p>Longitude: {this.state.lon}</p>
+        <img src={`https://us1.locationiq.com/v1/search?key=${location_IQ_API_KEY}&q=${this.state.memphisCityName}&format=json`} />
+
+        <form onSubmit={this.handleExplore}>
+          City Name:
+          <label>
+            <input type="text" value={this.state.memphisCityName} onChange={this.handleChange} />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
       </>
     );
   }
 }
 
 export default App;
-
-
-
-// import React, { Component } from "react";
-// import axios from "axios";
-
-// class App extends Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//       locations: []
-//     };
-//   }
-
-//   handleGetMemphis = async () => {
-//     console.log("click");
-//     let result = await axios.get("https://us1.locationiq.com/v1/search?key=pk.7c317e21f05b6efd9a783137cf700eab&q=Memphis&format=json");
-//     let data = result.data;
-//     let memphisDisplayName = data[0].display_name; // Corrected the property access
-//     let memphisLongitude = data[0].lon; // Add longitude
-//     let memphisLatitude = data[0].lat; // Add latitude
-
-//     console.log(result);
-//     console.log("done");
-//     this.setState({
-//       memphisDisplayName,
-//       memphisLongitude,
-//       memphisLatitude
-//     });
-//   }
-
-//   render() {
-//     return (
-//       <>
-//         <button onClick={this.handleGetMemphis}>Get the data for the map</button>
-//         <h3>Display Name: {this.state.memphisDisplayName}</h3>
-//         <h3>Longitude: {this.state.memphisLongitude}</h3>
-//         <h3>Latitude: {this.state.memphisLatitude}</h3>
-//       </>
-//     );
-//   }
-// }
-
-// export default App;
-
 
