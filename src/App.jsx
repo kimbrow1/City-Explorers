@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-const location_IQ_API_KEY = 'pk.7c317e21f05b6efd9a783137cf700eab';
+const location_IQ_API_KEY = 'pk.0e9d5abc918fcd0f95c088680a0b6547';
 
 class App extends React.Component {
   constructor() {
@@ -45,10 +45,11 @@ class App extends React.Component {
           </label>
          
         </form>
-        
+
         <h3>{this.state.memphisDisplay_Name}</h3>
         <p>Latitude: {this.state.lat}</p>
         <p>Longitude: {this.state.lon}</p>
+        
         <img src={`https://us1.locationiq.com/v1/search?key=${location_IQ_API_KEY}&q=${this.state.memphisCityName}&format=json`} />
 
         
