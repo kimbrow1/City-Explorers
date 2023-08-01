@@ -47,13 +47,11 @@ class App extends React.Component {
             <input type="submit" value="Submit" />
           </label>
         </form>
-
         <h3>{this.state.memphisDisplay_Name}</h3>
         <p>Latitude: {this.state.lat}</p>
         <p>Longitude: {this.state.lon}</p>
-
         {this.state.lat !== '' && this.state.lon !== '' && (
-          <img
+       <img
             src={`https://maps.locationiq.com/v3/staticmap?key=${location_IQ_API_KEY}&center=${this.state.lat},${this.state.lon}&zoom=12&size=400x400&format=png&maptype=map`}
             alt="Map"
           />
