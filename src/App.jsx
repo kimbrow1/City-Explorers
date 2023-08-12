@@ -1,8 +1,12 @@
 import React from "react";
 import axios from "axios";
 import { Alert } from "react-bootstrap"; 
+import Weather from "./weather";
 
-const location_IQ_API_KEY = 'pk.0e9d5abc918fcd0f95c088680a0b6547';
+
+const location_IQ_API_KEY = import.meta.env.VITE_REACT_APP_API_KEY;
+
+const url = import.meta.env.VITE_BACKENDURL || "http://localhost:3001/"
 
 class App extends React.Component {
   constructor() {
@@ -12,7 +16,8 @@ class App extends React.Component {
       lon: '',
       lat: '',
       memphisCityName: '',
-      error: null, 
+      error: null,
+      weatherData:[]
     };
   }
 
@@ -40,6 +45,13 @@ class App extends React.Component {
       } else {
         this.setState({ error: "Error getting location data. Please try again." });
       }
+    }
+
+    try {
+      const weatherData = await axios.get(`${url}weather?lat=${this.state.lat}&lon=${this.state.lon}`);
+      this.setState({weatherData}, () => console.log(this.state.weatherData)) // this a trick 
+    } catch (e) {
+      console.log(e);
     }
   };
 
@@ -74,7 +86,8 @@ class App extends React.Component {
             src={`https://maps.locationiq.com/v3/staticmap?key=${location_IQ_API_KEY}&center=${this.state.lat},${this.state.lon}&zoom=12&size=400x400&format=png&maptype=map`}
             alt="Map"
           />
-        )}
+        )} 
+        <Weather weatherData = {this.state.weatherData}/>
       </>
     );
   }
