@@ -7,13 +7,6 @@
 //      <div>
 //         {this.props.weatherData.map((item, index) => (
 //            <Card key={index}>
-//            <Card.Title>{item.date}</Card.Title>
-//            <Card.Body>{item.description}</Card.Body>
-//            </Card> 
-//         ))}
-//      </div> 
-//   }
-// }
 
 import React, { Component } from 'react';
 import { Card } from 'react-bootstrap';
