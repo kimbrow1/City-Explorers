@@ -1,9 +1,7 @@
 // import React, { Component } from 'react'
 // import { Card } from 'react-bootstrap'
 
-// export default class Weather extends Component {
-//   render() {
-//     return (
+
 
 
 import React, { Component } from 'react';
