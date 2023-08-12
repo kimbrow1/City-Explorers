@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Alert } from "react-bootstrap"; 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Weather from "./weather";
 
 
@@ -23,6 +24,7 @@ class App extends React.Component {
 
   handleExplore = async (event) => {
     event.preventDefault();
+    this.setState({error:null})
     try {
       let result = await axios.get(
         `https://us1.locationiq.com/v1/search?key=${location_IQ_API_KEY}&q=${this.state.memphisCityName}&format=json`
@@ -33,9 +35,20 @@ class App extends React.Component {
         lon: result.data[0].lon,
         lat: result.data[0].lat,
         error: null, 
+      }, async () => {
+        try {
+          const weatherData = await axios.get(`${url}weather?lat=${this.state.lat}&lon=${this.state.lon}`);
+          this.setState({weatherData:weatherData.data}, () => console.log(this.state.weatherData)) // this a trick 
+        } catch (e) {
+          console.log(e);
+          this.setState({error:e.message})
+        }
+
       });
     } catch (error) {
-      console.error("Error getting location data:", error);
+      console.error("Error getting location data:", error)
+      // this.setState({error:error.message})
+      ;
 
       if (error.response) {
         const { status, data } = error.response;
@@ -47,12 +60,12 @@ class App extends React.Component {
       }
     }
 
-    try {
-      const weatherData = await axios.get(`${url}weather?lat=${this.state.lat}&lon=${this.state.lon}`);
-      this.setState({weatherData}, () => console.log(this.state.weatherData)) // this a trick 
-    } catch (e) {
-      console.log(e);
-    }
+    // try {
+    //   const weatherData = await axios.get(`${url}weather?lat=${this.state.lat}&lon=${this.state.lon}`);
+    //   this.setState({weatherData}, () => console.log(this.state.weatherData)) // this a trick 
+    // } catch (e) {
+    //   console.log(e);
+    // }
   };
 
   handleChange = (event) => {
@@ -75,6 +88,7 @@ class App extends React.Component {
             <input type="submit" value="Submit" />
           </label>
         </form>
+        {console.log(this.state.error)}
         {this.state.error && (
           <Alert variant="danger">{this.state.error}</Alert>
         )}

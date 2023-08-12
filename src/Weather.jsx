@@ -4,7 +4,7 @@ import { Card } from 'react-bootstrap';
 export default class Weather extends Component {
   render() {
     return (
-      <div>
+      <div className='card-wrapper'>
         {this.props.weatherData.map((item, index) => (
           <Card key={index}>
             <Card.Body>

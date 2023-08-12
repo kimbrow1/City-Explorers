@@ -4,5 +4,27 @@ body{
     font-weight: bold;
     font-size: 20px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 960px;
+    margin: auto
+}
 
+.card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+@media(width < 960px) {
+.card-wrapper{
+    flex-direction: column;
+}
 }
