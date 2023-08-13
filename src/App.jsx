@@ -3,6 +3,7 @@ import axios from "axios";
 import { Alert } from "react-bootstrap"; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Weather from "./weather";
+import Movie from "./Movie";
 
 
 const location_IQ_API_KEY = import.meta.env.VITE_REACT_APP_API_KEY;
@@ -18,7 +19,8 @@ class App extends React.Component {
       lat: '',
       memphisCityName: '',
       error: null,
-      weatherData:[]
+      weatherData:[],
+      moviesData: [],
     };
   }
 
@@ -60,12 +62,13 @@ class App extends React.Component {
       }
     }
 
-    // try {
-    //   const weatherData = await axios.get(`${url}weather?lat=${this.state.lat}&lon=${this.state.lon}`);
-    //   this.setState({weatherData}, () => console.log(this.state.weatherData)) // this a trick 
-    // } catch (e) {
-    //   console.log(e);
-    // }
+    try {
+      const moviesData = await axios.get(`${url}movies?cityName=${this.state.memphisCityName}`);
+      this.setState({moviesData:moviesData.data}, () => console.log(this.state.moviesData) // this a trick 
+    )} catch (e) {
+      this.setState({error:e.message})
+       console.log(e);
+    }
   };
 
   handleChange = (event) => {
@@ -102,11 +105,11 @@ class App extends React.Component {
           />
         )} 
         <Weather weatherData = {this.state.weatherData}/>
-      </>
+        <Movie movies = {this.state.moviesData} />
+      </> 
     );
   }
 }
-
 export default App;
 
 
