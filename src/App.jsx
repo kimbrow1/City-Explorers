@@ -3,7 +3,8 @@ import axios from "axios";
 import { Alert } from "react-bootstrap"; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Weather from "./Weather";
-import Movie from "./Movie";
+import Movies from "./Movies";
+import WeatherDay from "./WeatherDay";
 
 
 const location_IQ_API_KEY = import.meta.env.VITE_REACT_APP_API_KEY;
@@ -105,7 +106,7 @@ class App extends React.Component {
           />
         )} 
         <Weather weatherData = {this.state.weatherData}/>
-        <Movie movies = {this.state.moviesData} />
+        <Movies movies = {this.state.moviesData} />
       </> 
     );
   }

@@ -1,22 +1,18 @@
-import React, { Component } from 'react';
-import { Card } from 'react-bootstrap';
+import React, { Component } from "react";
+import { Card } from "react-bootstrap";
 
 export default class Movie extends Component {
   render() {
+    const { title } = this.props.movieData;
     return (
-      <div className='card-wrapper'>
-        {this.props.movies.map((item, index) => (
-          <Card key={index}>
-            <Card.Body>
-              <Card.Text>{item.overview}</Card.Text>
-              <Card.Title>{item.title}</Card.Title>
-              <Card.Img src={item.img} alt={"Poster for  " + item.title}/>
-            </Card.Body>
-          </Card>
-        ))}
-      </div>
+      <Card>
+        <Card.Body>
+          <Card.Text>{this.props.movieData.overview}</Card.Text>
+          <Card.Title>{this.props.movieData.title}</Card.Title>
+          <Card.Img src={this.props.movieData.img} alt={"Poster for  " + title}
+          />
+        </Card.Body>
+      </Card>
     );
   }
 }
-
-
