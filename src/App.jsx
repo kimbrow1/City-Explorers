@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Alert } from "react-bootstrap"; 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Weather from "./weather";
+import Weather from "./Weather";
 import Movie from "./Movie";
 
 
