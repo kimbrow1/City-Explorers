@@ -3,13 +3,13 @@ import { Card } from 'react-bootstrap'
 
 export default class WeatherDay extends Component {
   render() {
-    const { title } = this.props.weatherData;
+    console.log(this.props.weatherData);
+    const { date, description } = this.props.weatherData; // Destructuring
     return (
       <Card>
         <Card.Body>
-          <Card.Text>{this.props.weatherData.overview}</Card.Text>
-          <Card.Title>{this.props.weatherData.title}</Card.Title>
-          <Card.Img src={this.props.weatherData.img} alt={"Poster for " + title} />
+          <Card.Text>{date}</Card.Text>
+          <Card.Title>{description}</Card.Title>
         </Card.Body>
       </Card>
     )
