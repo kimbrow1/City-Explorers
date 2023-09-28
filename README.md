@@ -26,5 +26,5 @@ Start time: _____
 Finish time: _____
 
 ### Lighthouse Accessibility Report Score
+<img width="1440" alt="Screen Shot 2023-09-28 at 12 46 00 PM" src="https://github.com/kimbrow1/City-Explorers/assets/67285915/682828c5-ea91-44f0-88df-d38b38511b86">
 
-![Light House](</Users/kimbrow/city-explorer/Screen Shot 2023-09-28 at 12.46.00 PM.png>)
